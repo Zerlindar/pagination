@@ -74,6 +74,9 @@
   display: inline-block;
   vertical-align: middle;
 }
+.alertify {
+  z-index: 4;
+}
 #pagination {
   margin: 0 auto;
   text-align: center;
@@ -83,9 +86,6 @@
 }
 #pagination .pagination li {
   display: inline-block;
-}
-#pagination .pagination .active a {
-  z-index: 0;
 }
 #pagination .input-sm {
   width: 30px;
