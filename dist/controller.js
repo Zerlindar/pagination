@@ -220,9 +220,9 @@ tab.directive("myPagination", ["alertify", function(alertify){
       if(!attrs.ngModel)
         throw '\"ng-model\" is undefined \n 中文:\"ng-model\"为必传参数。';
       if(!attrs.pageNum)
-        throw '\"pageNum\" is undefined \n 中文:\"items-per-page\"为必传参数。';
+        throw '\"pageNum\" is undefined \n 中文:\"pageNum\"为必传参数。';
       if(!attrs.pageCount)
-        throw '\"pageCount\" is undefined \n 中文:\"total-items\"为必传参数。';
+        throw '\"pageCount\" is undefined \n 中文:\"pageCount\"为必传参数。';
       scope.page = creatPage(scope.ngModel, scope.pageCount, scope.pageNum);  //页面数据
       scope.currentPage = scope.ngModel;                                      //当前页面
       scope.total = scope.pageCount;                                          //总页数
