@@ -144,12 +144,14 @@ tab.directive("myPagination", function(alertify){
   return {
     restrict: "EA",
     replace: true,
+    require: "?ngModel",
     scope: {
       pageNum: "=",
       pageCount: "=",
       ngModel: "=",
+      myClick: "&"
     },
-    link: function (scope, element, attrs) {
+    link: function (scope, element, attrs, ctr) {
       console.log(attrs.ngModel);
       if(!attrs.ngModel)
         throw '\"ng-model\" is undefined \n 中文:\"ng-model\"为必传参数。';
@@ -163,6 +165,10 @@ tab.directive("myPagination", function(alertify){
       scope.updatePage = function(page){
         scope.currentPage = page;
         scope.page = creatPage(scope.currentPage, scope.pageCount, scope.pageNum);
+        if (ctr) {
+          ctr.$setViewValue(page);
+          scope.myClick();
+        }
       }
       scope.jump = function(data){
         var currentPage = parseInt(document.getElementById("jumpPage").value);
@@ -171,9 +177,12 @@ tab.directive("myPagination", function(alertify){
         }else if(currentPage > scope.total){
           alertify.alert("超过最大页数")
         }else{
-          console.log(currentPage)
           scope.currentPage = currentPage;
           scope.page = creatPage(currentPage, scope.pageCount, scope.pageNum);
+          if (ctr) {
+            ctr.$setViewValue(currentPage);
+            scope.myClick();
+          }
         }
       }
     },

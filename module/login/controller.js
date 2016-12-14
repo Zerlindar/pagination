@@ -5,4 +5,7 @@ app.controller("loginController", ["$scope", "alertify", "myHttp", "myCookie", "
   $scope.page = 1;
   $scope.count = 200;
   $scope.size = 5;
+  $scope.update = function(){
+    console.log($scope.page);
+  }
 }]);
