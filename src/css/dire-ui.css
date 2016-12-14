@@ -1,0 +1,96 @@
+#tab-component span {
+  padding: 3px 4px;
+  margin: 0 3px;
+}
+#tab-component span:hover {
+  cursor: pointer;
+}
+#tab-component .active {
+  background: #9575cd;
+  color: #fff;
+  border-radius: 5px;
+}
+#selectVox .select-content {
+  max-height: 130px;
+  overflow: auto;
+  border: 1px solid #b5b5b5;
+  border-top: none;
+  border-bottom: none;
+  padding: 0;
+}
+#selectVox .select-content ul li {
+  height: 26px;
+  line-height: 26px;
+  padding-left: 10px;
+}
+#selectVox .select-content ul li:hover {
+  background: #c5d0dc;
+}
+#selectVox .select-content ul li:last-child {
+  border-bottom: 1px solid #b5b5b5;
+}
+#selectVox .fans-content .label-detail {
+  padding: 0;
+}
+#selectVox .fans-content .label-detail a {
+  height: 34px;
+  line-height: 34px;
+  display: block;
+  margin: 5px;
+  border: 1px solid #dddddd;
+  text-decoration: none;
+  color: #555555;
+  background: #f1eded;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  vertical-align: top;
+}
+#selectVox .fans-content .delete {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+#selectVox .fans-content .delete .glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#selectVox .fans-content .delete:before {
+  color: #d15b47;
+}
+.inline-block {
+  display: inline-block;
+  vertical-align: middle;
+}
+#pagination {
+  margin: 0 auto;
+  text-align: center;
+}
+#pagination .pagination {
+  margin: 0;
+}
+#pagination .input-sm {
+  width: 30px;
+  height: 20px;
+  padding: 0;
+  line-height: 20px;
+}
+#pagination .btn-sm {
+  height: 22px;
+  box-sizing: border-box;
+  padding: 0 4px;
+  border: none;
+  line-height: 22px;
+}
+#pagination .page-footer {
+  margin-left: 10px;
+}

@@ -1,0 +1,42 @@
+{
+  "name": "angular-cms",
+  "version": "1.0.0",
+  "description": "基于angular1搭建的CMS信息管理系统",
+  "main": "index.js",
+  "scripts": {
+    "test": "cms"
+  },
+  "repository": {
+    "type": "svn",
+    "url": "http://www.ilovecc.ren/demo/"
+  },
+  "keywords": [
+    "cms",
+    "angular",
+    "ui-router"
+  ],
+  "author": "Zerlinda",
+  "license": "ISC",
+  "bugs": {
+    "url": "1262120369@qq.com"
+  },
+  "homepage": "https://www.ilovecc.ren",
+  "dependencies": {
+    "bower": "^1.7.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.5.3",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-less": "^3.1.0",
+    "gulp-minify-css": "^1.2.3",
+    "gulp-ng-annotate": "^1.1.0",
+    "gulp-open": "^2.0.0",
+    "gulp-postcss": "^6.2.0",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-uglify": "^1.5.2",
+    "jquery": "^3.1.1"
+  }
+}

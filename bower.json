@@ -1,0 +1,38 @@
+{
+  "name": "bower",
+  "description": "bower",
+  "main": "index.js",
+  "authors": [
+    "Zerlinda"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "cms"
+  ],
+  "homepage": "https://www.ilovecc.ren",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "angular-ui-router": "ui-router#~0.2.18",
+    "angular": "~1.5.0",
+    "jquery": "~2.2.3",
+    "angular-toastr": "~1.7.0",
+    "angular-animate": "~1.5.3",
+    "moment": "~2.12.0",
+    "jquery-form": "~3.46.0",
+    "angular-bootstrap": "~1.3.1",
+    "lightbox2": "^2.8.2",
+    "angular-bootstrap-lightbox": "^0.12.0",
+    "bootstrap-daterangepicker": "https://github.com/dangrossman/bootstrap-daterangepicker.git#^2.1.19",
+    "alertifyjs": "^1.0.11",
+    "echarts": "https://github.com/ecomfe/echarts.git#^3.1.10",
+    "angular-socket-io": "https://github.com/btford/angular-socket-io.git#^0.7.0"
+  }
+}

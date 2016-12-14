@@ -1,0 +1,108 @@
+
+//tab切换页面
+#tab-component {
+  span{
+    padding: 3px 4px;
+    margin: 0 3px;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  .active{
+    background: #9575cd;
+    color: #fff;
+    border-radius: 5px;
+  }
+}
+//select
+#selectVox{
+  .select-content{
+    //display: none;
+    max-height: 130px;
+    overflow: auto;
+    border: 1px solid #b5b5b5;
+    border-top: none;
+    border-bottom: none;
+    padding: 0;
+    ul li{
+      height: 26px;
+      line-height: 26px;
+      padding-left: 10px;
+      &:hover{
+        background: #c5d0dc;
+      }
+      &:last-child{
+        border-bottom: 1px solid #b5b5b5;
+      }
+    }
+  }
+  .fans-content{
+    .label-detail{
+      padding: 0;
+      a{
+        height: 34px;
+        line-height: 34px;
+        display: block;
+        margin: 5px;
+        border: 1px solid #dddddd;
+        text-decoration: none;
+        color: #555555;
+        background: #f1eded;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-wrap: normal;
+        vertical-align: top;
+      }
+
+    }
+    .delete {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      cursor: pointer;
+      .glyphicon {
+        position: relative;
+        top: 1px;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      &:before {
+        color: #d15b47;
+      }
+    }
+  }
+}
+.inline-block{
+  display: inline-block;
+  vertical-align: middle;
+}
+//分页
+#pagination{
+  margin: 0 auto;
+  text-align: center;
+  .pagination{
+    margin: 0;
+  }
+  .input-sm{
+    width: 30px;
+    height: 20px;
+    padding: 0;
+    line-height: 20px;
+  }
+  .btn-sm{
+    height: 22px;
+    box-sizing: border-box;
+    padding: 0 4px;
+    border: none;
+    line-height: 22px;
+  }
+  .page-footer{
+    margin-left: 10px;
+  }
+}
