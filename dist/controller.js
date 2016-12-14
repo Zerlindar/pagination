@@ -250,7 +250,7 @@ tab.directive("myPagination", ["alertify", function(alertify){
     '<li ng-click = "updatePage(val)" ng-repeat="val in page track by $index" class = "page" ng-class = "{active: val == currentPage}"><a href="javascript:">{{val}}</a></li>' +
     '<li ng-click = "updatePage(currentPage+1)" ng-class = "{disabled: currentPage == total}"><a class = "next" title = "尾页" href="javascript:">&gt;</a></li>' +
     '<li ng-click = "updatePage(total)" ng-class = "{disabled: currentPage == total}"><a class = "lastPage" title = "后一页" href="javascript:">&raquo;</a></li></ul>' +
-    '<div class="page-footer inline-block page-footer">转至 ' +
+    '<div class="page-footer inline-block page-footer">{{currentPage}}/{{total}}&nbsp;&nbsp;转至 ' +
     '<input id = "jumpPage" class = "input-sm" type="text"/>页&nbsp;&nbsp; ' +
     '<div ng-click = "jump(ngModal)" class="btn-inline btn btn-sm btn-primary border-radius confirm">确定</div> </div>' +
     '</div>'
