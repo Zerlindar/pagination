@@ -84,6 +84,9 @@
 #pagination .pagination li {
   display: inline-block;
 }
+#pagination .pagination .active a {
+  z-index: 0;
+}
 #pagination .input-sm {
   width: 30px;
   height: 20px;
