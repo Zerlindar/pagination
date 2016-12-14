@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ui.router', 'ngAlertify', "ui.select"]);
+var app = angular.module('myApp', ['ui.router', 'ngAlertify', "ui.mydir"]);
 app.constant('apiUrl','http://test.xpcc.com.cn:8002/');
 app.constant('socketUrl','http://test.xpcc.com.cn:4500/')
 app.run(["alertify", function(alertify){
@@ -67,7 +67,7 @@ app.filter('trustHtml', ["$sce", function ($sce) {
 /**
  * Created by Administrator on 2016/12/12.
  */
-var tab = angular.module('ui.select', []);
+var tab = angular.module('ui.mydir', []);
 tab.service("eventUtil", function () {
   this.getEvent = function (event) {
     return event ? event : window.event;
@@ -181,7 +181,7 @@ tab.directive("selectVox", ["eventUtil", function (eventUtil) {
     '</div>'
   }
 }]);
-tab.directive("myPagination", function(){
+tab.directive("myPagination", ["alertify", function(alertify){
   function creatPage(current, count, length){
     var page = [], min, max;
     var center = (length + 1) / 2,
@@ -231,8 +231,16 @@ tab.directive("myPagination", function(){
         scope.page = creatPage(scope.currentPage, scope.pageCount, scope.pageNum);
       }
       scope.jump = function(data){
-        scope.currentPage = document.getElementById("jumpPage").value;
-        scope.page = creatPage(scope.currentPage, scope.pageCount, scope.pageNum);
+        var currentPage = parseInt(document.getElementById("jumpPage").value);
+        if(isNaN(currentPage)){
+          alertify.alert("输入不合法");
+        }else if(currentPage > scope.total){
+          alertify.alert("超过最大页数")
+        }else{
+          console.log(currentPage)
+          scope.currentPage = currentPage;
+          scope.page = creatPage(currentPage, scope.pageCount, scope.pageNum);
+        }
       }
     },
     template: '<div id ="pagination" >' +
@@ -244,10 +252,10 @@ tab.directive("myPagination", function(){
     '<li ng-click = "updatePage(total)" ng-class = "{disabled: currentPage == total}"><a class = "lastPage" title = "后一页" href="javascript:">&raquo;</a></li></ul>' +
     '<div class="page-footer inline-block page-footer">转至 ' +
     '<input id = "jumpPage" class = "input-sm" type="text"/>页&nbsp;&nbsp; ' +
-    '<div ng-click = "jump(ngModal)" class="btn-inline btn btn-sm btn-info border-radius confirm">确定</div> </div>' +
+    '<div ng-click = "jump(ngModal)" class="btn-inline btn btn-sm btn-primary border-radius confirm">确定</div> </div>' +
     '</div>'
   }
-})
+}])
 app.service('clone', function () {
   this.cloneObj = function (obj) {
     var o;

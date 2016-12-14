@@ -87,6 +87,9 @@
   margin: 0 auto;
   text-align: center;
   .pagination{
+    li{
+      display: inline-block;
+    }
     margin: 0;
   }
   .input-sm{
@@ -104,5 +107,20 @@
   }
   .page-footer{
     margin-left: 10px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 768px){
+  #pagination{
+    .pagination{
+      width: 100%;
+      margin-bottom: 10px;
+      li a{
+        padding: 2px 8px;
+      }
+    }
+    .page-footer{
+      margin-bottom: 10px;
+    }
   }
 }

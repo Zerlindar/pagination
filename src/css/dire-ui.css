@@ -78,6 +78,9 @@
 #pagination .pagination {
   margin: 0;
 }
+#pagination .pagination li {
+  display: inline-block;
+}
 #pagination .input-sm {
   width: 30px;
   height: 20px;
@@ -93,4 +96,17 @@
 }
 #pagination .page-footer {
   margin-left: 10px;
+  font-size: 12px;
+}
+@media (max-width: 768px) {
+  #pagination .pagination {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #pagination .pagination li a {
+    padding: 2px 8px;
+  }
+  #pagination .page-footer {
+    margin-bottom: 10px;
+  }
 }

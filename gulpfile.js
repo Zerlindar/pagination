@@ -63,12 +63,12 @@ gulp.task('min',function(){
     .pipe(uglify({outSourceMap:false}))
     .pipe(concat('plugin.min.js'))
     .pipe(gulp.dest('./dist'));
-  //gulp.src(config.CSS_PATH)
-  //  .pipe(sourcemaps.init())
-  //  .pipe(concat('plugin.min.css'))
-  //  .pipe(minifycss())
-  //  .pipe(sourcemaps.write())
-  //  .pipe(gulp.dest('./dist'))
+  gulp.src(config.CSS_PATH)
+    .pipe(sourcemaps.init())
+    .pipe(concat('plugin.min.css'))
+    .pipe(minifycss())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./dist'))
 })
 
 //生产环境输出
