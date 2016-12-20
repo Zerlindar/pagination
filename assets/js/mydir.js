@@ -32,11 +32,11 @@ tab.service("eventUtil", function () {
         element["on" + type] = handler;
       }
     },
-    this.removeListener = function (element, type, hander) {
+    this.removeListener = function (element, type, handler) {
       if (element.removeEventListener) {
-        element.removeEventListener(type, hander, false);
-      } else if (element.deattachEvent) {
-        element.deattachEvent("on" + type,
+        element.removeEventListener(type, handler, false);
+      } else if (element.detachEvent) {
+        element.detachEvent("on" + type,
           function () {
             return handler.call(element, window.event);
           });
@@ -115,8 +115,8 @@ tab.directive("selectVox", ["eventUtil", function (eventUtil) {
     '</div>'
   }
 }]);
-tab.directive("myPagination", function(alertify){
-  function creatPage(current, count, length){
+tab.directive("myPagination", function (alertify) {
+  function creatPage(current, count, length) {
     var page = [], min, max;
     var center = (length + 1) / 2,
       diff = (length - 1) / 2,
@@ -136,11 +136,12 @@ tab.directive("myPagination", function(alertify){
         max = count;
       }
     }
-    for(var i = min; i <= max; i ++){
+    for (var i = min; i <= max; i++) {
       page.push(i);
     }
     return page;
   }
+
   return {
     restrict: "EA",
     replace: true,
@@ -152,31 +153,33 @@ tab.directive("myPagination", function(alertify){
       myClick: "&"
     },
     link: function (scope, element, attrs, ctr) {
-      console.log(attrs.ngModel);
-      if(!attrs.ngModel)
+      if (!attrs.ngModel)
         throw '\"ng-model\" is undefined \n 中文:\"ng-model\"为必传参数。';
-      if(!attrs.pageNum)
+      if (!attrs.pageNum)
         throw '\"pageNum\" is undefined \n 中文:\"pageNum\"为必传参数。';
-      if(!attrs.pageCount)
+      if (!attrs.pageCount)
         throw '\"pageCount\" is undefined \n 中文:\"pageCount\"为必传参数。';
       scope.page = creatPage(scope.ngModel, scope.pageCount, scope.pageNum);  //页面数据
       scope.currentPage = scope.ngModel;                                      //当前页面
-      scope.total = scope.pageCount;                                          //总页数
-      scope.updatePage = function(page){
-        scope.currentPage = page;
-        scope.page = creatPage(scope.currentPage, scope.pageCount, scope.pageNum);
-        if (ctr) {
-          ctr.$setViewValue(page);
-          scope.myClick();
+      scope.updatePage = function (page, flag) {
+        if ((flag && ((flag == "pre" && page > 0) || (flag == "next" && page < scope.pageCount + 1))) || !flag) {
+          scope.currentPage = page;
+          scope.page = creatPage(scope.currentPage, scope.pageCount, scope.pageNum);
+          if (ctr) {
+            ctr.$setViewValue(page);
+            scope.myClick();
+          }
         }
       }
-      scope.jump = function(data){
+      scope.jump = function (data) {
         var currentPage = parseInt(document.getElementById("jumpPage").value);
-        if(isNaN(currentPage)){
+        if (isNaN(currentPage)) {
           alertify.alert("输入不合法");
-        }else if(currentPage > scope.total){
+        } else if (currentPage > scope.pageCount) {
           alertify.alert("超过最大页数")
-        }else{
+        } else if (currentPage < 1) {
+          alertify.alert("超过最小页数")
+        } else {
           scope.currentPage = currentPage;
           scope.page = creatPage(currentPage, scope.pageCount, scope.pageNum);
           if (ctr) {
@@ -189,11 +192,11 @@ tab.directive("myPagination", function(alertify){
     template: '<div id ="pagination" >' +
     '<ul class="pagination inline-block">' +
     '<li ng-click = "updatePage(1)" ng-class = "{disabled: currentPage == 1}"><a class = "firstPage" title = "首页"  href="javascript:;">&laquo;</a></li>' +
-    '<li ng-click = "updatePage(currentPage-1)" ng-class = "{disabled: currentPage == 1}"><a class = "previous" title = "前一页"  href="javascript:;">&lt;</a></li>'+
+    '<li ng-click = "updatePage(currentPage-1, \'pre\')" ng-class = "{disabled: currentPage == 1}"><a class = "previous" title = "前一页"  href="javascript:;">&lt;</a></li>' +
     '<li ng-click = "updatePage(val)" ng-repeat="val in page track by $index" class = "page" ng-class = "{active: val == currentPage}"><a href="javascript:">{{val}}</a></li>' +
-    '<li ng-click = "updatePage(currentPage+1)" ng-class = "{disabled: currentPage == total}"><a class = "next" title = "尾页" href="javascript:">&gt;</a></li>' +
-    '<li ng-click = "updatePage(total)" ng-class = "{disabled: currentPage == total}"><a class = "lastPage" title = "后一页" href="javascript:">&raquo;</a></li></ul>' +
-    '<div class="page-footer inline-block page-footer">{{currentPage}}/{{total}}&nbsp;&nbsp;转至 ' +
+    '<li ng-click = "updatePage(currentPage+1, \'next\')" ng-class = "{disabled: currentPage == pageCount}"><a class = "next" title = "尾页" href="javascript:">&gt;</a></li>' +
+    '<li ng-click = "updatePage(pageCount)" ng-class = "{disabled: currentPage == pageCount}"><a class = "lastPage" title = "后一页" href="javascript:">&raquo;</a></li></ul>' +
+    '<div class="page-footer inline-block page-footer">{{currentPage}}/{{pageCount}}&nbsp;&nbsp;转至 ' +
     '<input id = "jumpPage" class = "input-sm" type="text"/>页&nbsp;&nbsp; ' +
     '<div ng-click = "jump(ngModal)" class="btn-inline btn btn-sm btn-primary border-radius confirm">确定</div> </div>' +
     '</div>'
