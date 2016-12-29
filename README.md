@@ -1,4 +1,4 @@
-#angular分页插件
+#angular分页插件  
 一个简单angular自定义分页组件
 <p>在线演示地址：<a target = "blank" href ="http://www.ilovecc.ren/pagination">angular分页展示</a></p>
 <p>
