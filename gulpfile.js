@@ -118,6 +118,7 @@ gulp.task('angular-min',function(){
     gulp.src(config.JS_WATCH)
         .pipe(ngAnnotate())
         .pipe(ngMin({dynamic:false}))
+
         .pipe(stripDebug())  //console
         .pipe(uglify({outSourceMap:false}))
         .pipe(concat('controller.min.js'))
