@@ -1,5 +1,6 @@
-#angular分页插件
-一个简单angular自定义分页组件
+# pagination
+一个简单的自定义angular分页组件
+
 <p>在线演示地址：<a target = "blank" href ="http://www.ilovecc.ren/pagination">angular分页展示</a></p>
 <p>
 所有资源都已经在本地打包好，下载即可运行。如需开发，请在本地安装好node环境，执行npm install与bower install自动安装项目所依赖的插件。
