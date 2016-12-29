@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # pagination
 一个简单的自定义angular分页组件
 
